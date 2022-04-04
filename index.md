@@ -6,8 +6,9 @@ Since 2022.04.04
 
 ## Intro
 
-소프트웨어 공부한 내용 정리하기 위한 GitBlog
-![main_page](../images/main_page.jpg)
+소프트웨어 공부한 내용 정리하기 위한 GitBlog<br></br>
+![main_page](gitbook/images/main_page.jpg)
+<img src="gitbook/images/main_page.jpg" width="550" height="300">
 ## ETC
 
 ```python
