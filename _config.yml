@@ -1,8 +1,8 @@
 # Configurations
-title:            Jekyll Gitbook
-longtitle:        Jekyll Gitbook
-author:           HE Tao
-email:            sighingnow@gmail.com
+title:            KwonHH's SoftWare Blog
+longtitle:        KwonHH's SoftWare Blog
+author:           HH Kwon
+email:            kh202151@gmail.com
 description: >
   Build Jekyll site with the GitBook style.
 
@@ -10,7 +10,7 @@ version:          1.0
 gitbook_version:  3.2.3
 
 url:              'https://kwonhh.github.io'
-baseurl:          '/kwonhh.github.io'
+baseurl:          '/gitbook'
 rss:              RSS
 
 toc:
