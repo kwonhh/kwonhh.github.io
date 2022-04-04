@@ -9,8 +9,8 @@ description: >
 version:          1.0
 gitbook_version:  3.2.3
 
-url:              'https://kwonhh.github.io'
-baseurl:          '/gitbook'
+url:              'https://github.com/kwonhh'
+baseurl:          '/kwonhh.github.io'
 rss:              RSS
 
 toc:
