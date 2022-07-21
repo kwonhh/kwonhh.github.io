@@ -144,7 +144,6 @@ for _ in range(T):
         if in_degree[m] == 0:
             tmp[m] = 1
             q.append((m, tmp[m]))
-
     print(K, solution2(q))
 ```
 처음 방법으로 답을 제출했을 때 오답처리가 발생하여 위 코드로 다시 제출.<br>
