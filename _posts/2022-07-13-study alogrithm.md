@@ -36,4 +36,119 @@ layout: post
 <0> 진입차수를 저장하기 위한 리스트를 선언하고, 연결 리스트에 노드 간 연결 정보 정리.<br>방문 순서를 저장할 리스트 P선언<br>
 <1> **진입차수가 0**인 노드는 **방문한 것으로 표시**하고, 큐에 추가<br>
 <2> 큐에서 가장 앞 노드를 P에 추가하고, 연결된 노드 중 방문하지 않은 노드의 진입차수를 1감소<br>
-<3> 감소한 진입차수가 0인 경우 해당 노드를 큐에 넣고, 방문 표시.<br>위 <2>부터 <3>까지 과정을 큐가 빌 때까지 반복 수행<br>
+<3> 감소한 진입차수가 0인 경우 해당 노드를 큐에 넣고, 방문 표시.<br>위 <2>부터 <3>까지 과정을 큐가 빌 때까지 반복 수행<br><br>
+
+BOJ9470
+-------------
+[문제링크](https://www.acmicpc.net/problem/9470 "문제 링크")<br>
+## 처음에 시도한 잘못된 코드
+```python
+from collections import deque
+
+T = int(input().rstrip())
+
+def make_list(st, ed):
+    # 진입 차수 계산
+    in_degree[ed] += 1
+
+def solution(q):
+    while q:
+        start, order = q.popleft()
+        vis.append(start)
+        for n in l_list[start]:
+            in_degree[n] -= 1
+            if tmp[n] == order:
+                tmp[n] += 1
+            else:
+                tmp[n] = max(tmp[n], order)
+            if n not in vis and in_degree[n] == 0:
+                q.append((n, tmp[n]))
+
+for _ in range(T):
+    K, M, P = map(int, input().split())
+    in_degree = [0 for _ in range(M + 1)]
+    tmp = [0 for _ in range(M + 1)]
+    for _ in range(P):
+        st, ed = map(int, input().split())
+        make_list(st, ed)
+    q = deque()
+    for m in range(1, M + 1):
+        if in_degree[m] == 0:
+            tmp[m] = 1
+            q.append((m, tmp[m]))
+
+    solution(q)
+    print(K, tmp[M])
+```
+처음에 접근한 방법<br>
+1. 각 노드의 진입차수를 계산 : make_list() 함수
+2. 각 노드의 순서를 계산하기 위해 tmp 리스트를 선언하고, 진입차수가 0인 노드는 순서롤 1로 갱신
+3. 노드와 순서를 pair로 큐에 삽입하고, solution 함수 호출
+4. 큐의 왼쪽에서 pop하고 방문표시를 한 후에 진입차수 1 감소
+5. 현재 노드의 연결 리스트를 돌면서, 연결된 노드의 순서와 현재 노드의 순서를 비교. 순서가 같으면 1 증가시키고, 다르면 더 큰 값으로 순서를 갱신
+6. 연결된 노드와 갱신된 순서를 pair로 하여 큐에 삽입
+7. 큐가 빌 때까지 4~6 과정 반복 <br><br>
+## 정답 코드
+```python
+from collections import deque
+
+T = int(input().rstrip())
+
+def make_list(st, ed):
+    # 진입 차수 계산
+    in_degree[ed] += 1
+    # start -> end 연결 리스트
+    l_list[st].append(ed)
+    # end <- start 연결 리스트 : 노드가 어디로부터 연결되어있는지 확인하기 위한 리스트
+    src[ed].append(st)
+
+def solution(q):
+    # 위상정렬 결과를 p에 저장해주는 함수
+    while q:
+        start, order = q.popleft()
+        vis.append(start)
+        p.append(start)
+        for n in l_list[start]:
+            in_degree[n] -= 1
+            if n not in vis and in_degree[n] == 0:
+                q.append((n, order+1))
+
+def solution2(q):
+    solution(q)
+    for pp in p:
+        if len(src[pp]) != 0:
+            # src[pp]의 길이가 0이면 그대로 순서를 1로 둠
+            for s in src[pp]:
+                # 도착지가 pp인 노드(src[pp]의 원소)를 확인하면서
+                # 순서 tmp[pp]를 각 노드의 순서들 중 최댓값으로 갱신하거나
+                # 혹은 그 순서가 2개 이상이라면 1을 추가
+                if tmp[pp] != tmp[s]:
+                    tmp[pp] = max(tmp[pp], tmp[s])
+                else:
+                    tmp[pp] += 1
+    # 도착 노드의 순서를 리턴
+    return tmp[p[-1]]
+
+for _ in range(T):
+    K, M, P = map(int, input().split())
+    in_degree = [0 for _ in range(M + 1)]
+    l_list = [[] for _ in range(M + 1)]
+    tmp = [0 for _ in range(M + 1)]
+    src = [[] for _ in range(M + 1)]
+    p = deque()
+    for _ in range(P):
+        st, ed = map(int, input().split())
+        make_list(st, ed)
+    q = deque()
+    for m in range(1, M + 1):
+        if in_degree[m] == 0:
+            tmp[m] = 1
+            q.append((m, tmp[m]))
+
+    print(K, solution2(q))
+```
+처음 방법으로 답을 제출했을 때 오답처리가 발생하여 위 코드로 다시 제출.<br>
+오류가 발생한 이유는 현재 노드와 연결된 노드를 그때마다 값을 갱신하면서 값에 오류가 발생<br>
+따라서 src라는 리스트를 선언하고, 임의 노드가 어떤 노드로부터 출발하였는지 도착지 중심으로 연결리스트 작성<br>
+그리고 위상정렬 된 값을 순서대로 돌면서 노드가 어떤 노드로부터 왔는지 확인하고, 그 노드들 중 순서 i의 최대값으로 현재 노드의 순서를 갱신(단, 2개 이상이면 i+1 로 갱신)<br>
+<img src="../gitbook/images/c9470.JPG" width="600" height="120"><br><br>
