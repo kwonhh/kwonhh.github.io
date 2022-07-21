@@ -48,8 +48,7 @@ from collections import deque
 T = int(input().rstrip())
 
 def make_list(st, ed):
-    # 진입 차수 계산
-    in_degree[ed] += 1
+    in_degree[ed] += 1      # 진입 차수 계산
 
 def solution(q):
     while q:
@@ -95,15 +94,11 @@ from collections import deque
 T = int(input().rstrip())
 
 def make_list(st, ed):
-    # 진입 차수 계산
-    in_degree[ed] += 1
-    # start -> end 연결 리스트
-    l_list[st].append(ed)
-    # end <- start 연결 리스트 : 노드가 어디로부터 연결되어있는지 확인하기 위한 리스트
-    src[ed].append(st)
+    in_degree[ed] += 1      # 진입 차수 계산
+    l_list[st].append(ed)   # start -> end 연결 리스트
+    src[ed].append(st)      # end <- start 연결 리스트 : 노드가 어디로부터 연결되어있는지 확인하기 위한 리스트
 
-def solution(q):
-    # 위상정렬 결과를 p에 저장해주는 함수
+def solution(q):            # 위상정렬 결과를 p에 저장해주는 함수
     while q:
         start, order = q.popleft()
         vis.append(start)
@@ -116,18 +111,13 @@ def solution(q):
 def solution2(q):
     solution(q)
     for pp in p:
-        if len(src[pp]) != 0:
-            # src[pp]의 길이가 0이면 그대로 순서를 1로 둠
-            for s in src[pp]:
-                # 도착지가 pp인 노드(src[pp]의 원소)를 확인하면서
-                # 순서 tmp[pp]를 각 노드의 순서들 중 최댓값으로 갱신하거나
-                # 혹은 그 순서가 2개 이상이라면 1을 추가
-                if tmp[pp] != tmp[s]:
-                    tmp[pp] = max(tmp[pp], tmp[s])
+        if len(src[pp]) != 0:                       # src[pp]의 길이가 0이면 그대로 순서를 1로 둠
+            for s in src[pp]:                       # 도착지가 pp인 노드(src[pp]의 원소)를 확인하면서
+                if tmp[pp] != tmp[s]:                        
+                    tmp[pp] = max(tmp[pp], tmp[s])  # 순서 tmp[pp]를 각 노드의 순서들 중 최댓값으로 갱신하거나      
                 else:
-                    tmp[pp] += 1
-    # 도착 노드의 순서를 리턴
-    return tmp[p[-1]]
+                    tmp[pp] += 1                    # 혹은 그 순서가 2개 이상이라면 1을 추가
+    return tmp[p[-1]]                               # 도착 노드의 순서를 리턴
 
 for _ in range(T):
     K, M, P = map(int, input().split())
