@@ -38,9 +38,8 @@ layout: post
 <2> 큐에서 가장 앞 노드를 P에 추가하고, 연결된 노드 중 방문하지 않은 노드의 진입차수를 1감소<br>
 <3> 감소한 진입차수가 0인 경우 해당 노드를 큐에 넣고, 방문 표시.<br>위 <2>부터 <3>까지 과정을 큐가 빌 때까지 반복 수행<br><br>
 
-BOJ9470
--------------
-[문제링크](https://www.acmicpc.net/problem/9470 "문제 링크")<br>
+# BOJ9470
+[문제링크](https://www.acmicpc.net/problem/9470 "문제 링크")
 ## 처음에 시도한 잘못된 코드
 ~~~python
 from collections import deque
