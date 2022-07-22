@@ -39,6 +39,7 @@ layout: post
 # BOJ9470
 [문제링크](https://www.acmicpc.net/problem/9470 "문제 링크")
 ## 처음에 시도한 잘못된 코드
+
 ~~~python
 from collections import deque
 
@@ -76,6 +77,7 @@ for _ in range(T):
     solution(q)
     print(K, tmp[M])
 ~~~
+
 처음에 접근한 방법<br>
 1. 각 노드의 진입차수를 계산 : make_list() 함수
 2. 각 노드의 순서를 계산하기 위해 tmp 리스트를 선언하고, 진입차수가 0인 노드는 순서롤 1로 갱신
@@ -85,6 +87,7 @@ for _ in range(T):
 6. 연결된 노드와 갱신된 순서를 pair로 하여 큐에 삽입
 7. 큐가 빌 때까지 4~6 과정 반복 <br><br>
 ## 정답 코드
+
 ```python
 from collections import deque
 
