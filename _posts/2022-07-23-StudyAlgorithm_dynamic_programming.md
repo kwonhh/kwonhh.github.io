@@ -8,7 +8,7 @@ layout: post
 
 # BOJ15989
 [문제링크](https://www.acmicpc.net/problem/15989 "문제 링크")<br>
-<img src="../gitbook/images/c15989.png" width="700" height="900"><br>
+<img src="../gitbook/images/c15989.png" width="1200" height="700"><br>
 접근한 방법<br>
 1. 문제에서 주어진 숫자를 각각 1로 시작하는 수의 조합, 2로 시작하는 수의 조합, 3으로 시작하는 수의 조합으로 분류
 2. 위 표와 같이 1로 시작하는 숫자의 경우 바로 *1번 이전의 숫자*의 *1로 만들 수 있는 숫자 조합*에 1을 추가한 것이기 때문에 1로 시작하는 숫자의 경우의 수는 어떤 수든 1
