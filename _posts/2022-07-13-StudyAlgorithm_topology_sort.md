@@ -1,5 +1,5 @@
 ---
-title: 위상정렬
+title: 알고리즘 공부_위상정렬
 author: HH KWON
 date: 2022-07-13
 category: Jekyll
