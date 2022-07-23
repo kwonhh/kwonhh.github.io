@@ -27,12 +27,11 @@ kramdown:
   smart_quotes:           lsquo,rsquo,ldquo,rdquo
   toc_levels:             1..6
   syntax_highlighter:     rouge
-  syntax_highlighter_opts:
-    guess_lang:           true
-  highlighter: rouge
     syntax_highlighter_opts:
       block:
         line_numbers: true
+  syntax_highlighter_opts:
+    guess_lang:           true
 
 syntax_highlighter_style: colorful
 
