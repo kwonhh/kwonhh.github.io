@@ -56,3 +56,46 @@ for _ in range(T):
 ```
 
 <img src="../gitbook/images/c15989.JPG" width="700" height="80"><br><br>
+
+
+# BOJ495
+[문제링크](https://www.acmicpc.net/problem/1495 "문제 링크")<br>
+<img src="../gitbook/images/c15989.png" width="1200" height="550"><br>
+접근한 방법<br>
+1. dp 정의 : dp[songs][volume] = songs 번째의 곡을 연주할 때 volume을 만들 수 있는가 ? 만들 수 있으면 1, 만들 수 없으면 0
+2. dp[0]에서 시작 볼륨의 값을 1로 설정
+   <img src="../gitbook/images/c1495_1.JPG" width="500" height="100"><br><br>
+3. 문제에서 주어진 조건에 의해 다음 연주하는 곡의 볼륨은 +/- 5이므로, dp[0][startv]에서 +5 혹은 -5 했을 때의 볼륨이 조건에 맞는 값이라면 dp[1]에서 해당하는 값을 1로 변경<br>
+   이 경우는 dp[1][0] 과 dp[1][10]을 만들 수 있음
+   <img src="../gitbook/images/c1495_2.JPG" width="500" height="100"><br><br>
+4. 3번에서 수행한 방법과 동일하게 dp[1]의 값으로부터 +/- 3을 했을 때 만들 수 있는 볼륨 중 13 과 -3은 조건에 맞지 않으므로 제외하고, 조건에 맞는 값만 표시하면 dp[2][3], dp[2][7]
+   <img src="../gitbook/images/c1495_3.JPG" width="500" height="100"><br><br>
+5. 같은 방법으로 마지막 곡에 대해서도 표시하면 아래와 같은 결과
+   <img src="../gitbook/images/c1495_4.JPG" width="500" height="100"><br><br>
+6. 계산된 dp에서 마지막 곡을 연주했을 때의 최대값을 찾아야 하기 때문에 dp[songs] 중에서 값이 1인 인덱스로 역순으로 조회하고, 없다면 -1을 출력<br><br>
+## 정답 코드
+
+```python
+# https://www.acmicpc.net/problem/1495
+
+songs, startv, maxv = map(int, input().split())
+v = list(map(int, input().split()))
+dp = [[0 for _ in range(maxv + 1)] for _ in range(songs+1)]
+
+dp[0][startv] = 1
+for i in range(1, songs+1):
+    for ii in range(maxv+1):
+        if dp[i-1][ii] == 1:
+            if ii + v[i-1] <= maxv:
+                dp[i][ii + v[i-1]] = 1
+            if ii - v[i-1] >= 0:
+                dp[i][ii - v[i-1]] = 1
+ans = -1
+for d in range(maxv, -1, -1):
+    if dp[songs][d] == 1:
+        ans = d
+        break
+print(ans)
+```
+
+<img src="../gitbook/images/c1495.JPG" width="700" height="80"><br><br>
