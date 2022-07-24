@@ -38,7 +38,7 @@ layout: post
 
 # BOJ9470
 [문제링크](https://www.acmicpc.net/problem/9470 "문제 링크")
-## 처음에 시도한 잘못된 코드
+처음에 시도한 잘못된 코드
 
 ~~~python
 from collections import deque
@@ -86,7 +86,8 @@ for _ in range(T):
 5. 현재 노드의 연결 리스트를 돌면서, 연결된 노드의 순서와 현재 노드의 순서를 비교. 순서가 같으면 1 증가시키고, 다르면 더 큰 값으로 순서를 갱신
 6. 연결된 노드와 갱신된 순서를 pair로 하여 큐에 삽입
 7. 큐가 빌 때까지 4~6 과정 반복 <br><br>
-## 정답 코드
+
+정답 코드
 
 ```python
 from collections import deque
