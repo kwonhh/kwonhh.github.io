@@ -58,7 +58,7 @@ for _ in range(T):
 <img src="../gitbook/images/c15989.JPG" width="700" height="80"><br><br>
 
 
-# BOJ495
+# BOJ1495
 [문제링크](https://www.acmicpc.net/problem/1495 "문제 링크")<br>
 접근한 방법<br>
 1. dp 정의 : dp[songs][volume] = songs 번째의 곡을 연주할 때 volume을 만들 수 있는가 ? 만들 수 있으면 1, 만들 수 없으면 0
