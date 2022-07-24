@@ -8,7 +8,7 @@ layout: post
 
 # BOJ15989
 [문제링크](https://www.acmicpc.net/problem/15989 "문제 링크")<br>
-<img src="../gitbook/images/c15989.png" width="1200" height="550"><br>
+<img src="../gitbook/images/c15989.png" width="900" height="450"><br>
 접근한 방법<br>
 1. 문제에서 주어진 숫자를 각각 1로 시작하는 수의 조합, 2로 시작하는 수의 조합, 3으로 시작하는 수의 조합으로 분류
 2. 위 표와 같이 1로 시작하는 숫자의 경우 바로 *1번 이전의 숫자*의 *1로 만들 수 있는 숫자 조합*에 1을 추가한 것이기 때문에 1로 시작하는 숫자의 경우의 수는 어떤 수든 1
@@ -63,14 +63,14 @@ for _ in range(T):
 접근한 방법<br>
 1. dp 정의 : dp[songs][volume] = songs 번째의 곡을 연주할 때 volume을 만들 수 있는가 ? 만들 수 있으면 1, 만들 수 없으면 0
 2. dp[0]에서 시작 볼륨의 값을 1로 설정<br>
-   <img src="../gitbook/images/c1495_1.JPG" width="500" height="100"><br><br>
+   <img src="../gitbook/images/c1495_1.JPG" width="600" height="150"><br><br>
 3. 문제에서 주어진 조건에 의해 다음 연주하는 곡의 볼륨은 +/- 5이므로, dp[0][startv]에서 +5 혹은 -5 했을 때의 볼륨이 조건에 맞는 값이라면 dp[1]에서 해당하는 값을 1로 변경<br>
    이 경우는 dp[1][0] 과 dp[1][10]을 만들 수 있음<br>
-   <img src="../gitbook/images/c1495_2.JPG" width="500" height="100"><br><br>
+   <img src="../gitbook/images/c1495_2.JPG" width="600" height="150"><br><br>
 4. 3번에서 수행한 방법과 동일하게 dp[1]의 값으로부터 +/- 3을 했을 때 만들 수 있는 볼륨 중 13 과 -3은 조건에 맞지 않으므로 제외하고, 조건에 맞는 값만 표시하면 dp[2][3], dp[2][7]<br>
-   <img src="../gitbook/images/c1495_3.JPG" width="500" height="100"><br><br>
+   <img src="../gitbook/images/c1495_3.JPG" width="600" height="150"><br><br>
 5. 같은 방법으로 마지막 곡에 대해서도 표시하면 아래와 같은 결과<br>
-   <img src="../gitbook/images/c1495_4.JPG" width="500" height="100"><br><br>
+   <img src="../gitbook/images/c1495_4.JPG" width="600" height="150"><br><br>
 6. 계산된 dp에서 마지막 곡을 연주했을 때의 최대값을 찾아야 하기 때문에 dp[songs] 중에서 값이 1인 인덱스로 역순으로 조회하고, 없다면 -1을 출력<br><br>
 ## 정답 코드
 
