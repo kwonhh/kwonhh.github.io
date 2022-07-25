@@ -130,3 +130,46 @@ print(dp[-1])
 ```
 
 <img src="../gitbook/images/c11058.JPG" width="700" height="80"><br><br>
+
+
+# BOJ12026
+[문제링크](https://www.acmicpc.net/problem/12026 "문제 링크")<br>
+접근한 방법<br>
+1. dp 정의 : dp[n] = n번째 위치까지 오는 경우 중에 가장 작은 에너지를 소모하는 경우<br>
+   그리고 dp의 값을 10^8 로 초기화하고, 실행 종료 후에도 여전히 값이 10^8인 경우 밟지 않은 길로 간주하였다.
+2. dp[1]은 무조건 밟아야 하기 때문에 1
+3. 각 n번째 위치를 밟기 위해서는 B->O->J->B->O ... 순서를 만족해야 하기 때문에 현재 현재 위치의 인덱스를 저장해주고(8~15번째 줄), 현재 위치 이전의 길을 for문을 통해 탐색하면서 현재 위치 인덱스보다 하나 이전 문자인지 확인해주었다(18번째 줄)
+4. 위 3번의 조건을 만족하는 길을 찾게 된다면, 현재 돌까지 오는데 소모되는 에너지의 최소값을 찾아주고(19번째 줄), 그 값으로 dp를 갱신했다.
+5. 실행 완료 후에 목적지의 dp값을 확인하여 10^8이 아니라면 그 값을 출력하고, 맞다면 도달하지 못한 것으로 간주하여 -1을 출력<br>
+   마지막에 dp값에서 1을 뺀 이유는 첫 번째 돌에서부터 출발한 것이라 dp[1] 값은 원래는 0이기 때문에 마지막 값에서 1을 빼줌<br><br>
+
+정답 코드
+
+```python
+# acmicpc.net/problem/12026
+n = int(input().rstrip())
+road = input().rstrip()
+dp = [int(10e8) for _ in range(n+1)]
+dp[1] = 1
+order = ['B', 'O', 'J']
+for d in range(2, n+1):
+    idx = 0
+    if road[d-1] == 'O':
+        idx = 1
+    elif road[d-1] == 'J':
+        idx = 2
+    idx_t = (idx - 1)
+    if idx_t == -1:
+        idx_t = 2
+    val = int(10e8)
+    for dd in range(1, d):
+        if road[dd-1] == order[idx_t]:
+            val = min(val, dp[dd]+((d-dd)**2))
+    dp[d] = val
+if dp[-1] != int(10e8):
+    print(dp[n]-1)
+else:
+    print(-1)
+```
+
+<img src="../gitbook/images/c12026.JPG" width="700" height="80"><br><br>
