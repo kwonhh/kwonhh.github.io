@@ -173,3 +173,42 @@ else:
 ```
 
 <img src="../gitbook/images/c12026.JPG" width="700" height="80"><br><br>
+
+
+# BOJ12865
+[문제링크](https://www.acmicpc.net/problem/12865 "문제 링크")<br>
+접근한 방법 : Knapsack 알고리즘<br>
+[어떻게 풀어야할지 몰라서 삽질하고 있을 때 도움이 된 감사한 블로그 링크](https://hongcoding.tistory.com/50 "도움이 된 블로그 링크")<br>
+1. dp 정의 : dp[n][kg] = 각 무게 이하로 담기까지 가방에 n번째 짐을 담을 때의 가치 중 최대
+2. dp[n][kg] 만드는 방법은<br>
+   - n번째 짐을 담았을 때 현재 kg를 초과한다면 담지 않음
+      - 즉, 이전에 담았던 짐의 가치와 동일한 가치를 갖게 되므로 dp[n][kg] = dp[n-1][kg]
+   - n번째 짐을 담았을 때 현재 kg를 초과하지 않는다면 아래의 경우 중 최대의 가치를 선택
+      - 현재 담을 무게만큼을 빼고, 지금 물건을 담는다 : dp[n][kg] = dp[n-1][kg-현재물건의 무게] + 현재 물건의 가치<br>
+        이 과정에서 현재 무게와 동일한 짐에 대해 무게 당 가치가 더 큰 물건으로 대체된다 
+      - 물건을 담지 않는다 : dp[n][kg] = dp[n-1][kg]
+3. 위 과정을 거치고 n번째 짐에 대한 값까지 계산이 끝났을 때 dp[n][-1]을 출력<br>
+   물건을 담지 않는 경우는 dp[n][kg] 에 dp[n-1][kg]를 대입했기 때문에 가장 마지막 값을 출력하더라도 결과에 오류가 없음<br><br>
+
+
+정답 코드
+
+```python
+# https://www.acmicpc.net/problem/12865
+n, kg = map(int, input().split())
+dp = [[0 for _ in range(kg+1)] for _ in range(n+1)]
+load = [[0, 0]]
+for nn in range(n):
+    l, v = map(int, input().split())
+    load.append((l, v))
+
+for nn in range(1, n+1):
+    for kk in range(1, kg+1):
+        if kk < load[nn][0]:
+            dp[nn][kk] = dp[nn-1][kk]
+        else:
+            dp[nn][kk] = max(dp[nn-1][kk], dp[nn-1][kk-load[nn][0]] + load[nn][1])
+print(dp[n][-1])
+```
+
+<img src="../gitbook/images/c12865.JPG" width="700" height="80"><br><br>
