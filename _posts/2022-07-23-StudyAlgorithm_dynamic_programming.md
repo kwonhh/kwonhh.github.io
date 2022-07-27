@@ -212,3 +212,39 @@ print(dp[n][-1])
 ```
 
 <img src="../gitbook/images/c12865.JPG" width="700" height="80"><br><br>
+
+
+# BOJ5557
+[문제링크](https://www.acmicpc.net/problem/5557 "문제 링크")<br>
+접근한 방법
+1. dp 정의 : dp[n][num] = 주어진 숫자 중 n번째 수를 더하거나 빼서 num을 만들 수 있는 경우의 수
+2. dp[n][num] 만드는 방법을 문제의 [8 3 2 4 8 7 2 4 0 8 8] 예제로 설명하면<br>
+   - 1번째 숫자 8을 이용해 8을 만드는 방법은 1가지이므로 dp[1][8] = 1로 초기화
+   - 2번째 숫자를 더하거나 빼는 경우를 계산하기 위해서는 이전의 단계에서 0이 아닌 값을 찾고(0이 아니라는 것은 더하거나 빼서 그 숫자를 만들 수 있다는 의미이기 때문에)
+    - 이 경우는 3을 더하거나 빼서 만들 수 있는 수는 5, 11이기 때문에 dp[2][5] += dp[1][8], dp[2][11] += dp[1][8]
+    - 처음에 시도했을 때는 단순히 12, 15번째 줄과 같이 1만 더해주었는데, 이렇게 하면 앞선 경우의 수를 모두 포함하는 결과가 아니기 때문에 결과에 오류 발생
+3. 위 과정을 거치고 n-1번째 수까지 더하거나 뺀 뒤의 결과와 n번째 숫자(예제에서는 8)와의 등식이 성립하는 dp[n-1][문제에 주어진 숫자의 가장 마지막 수] 의 결과를 출력<br><br>
+
+
+정답 코드
+
+```python
+# https://www.acmicpc.net/problem/5557
+n = int(input().rstrip())
+nums = list(map(int, input().split()))
+nums = [0] + nums
+dp = [[0 for _ in range(21)] for _ in range(n)]
+dp[1][nums[1]] = 1
+for i in range(2, n):
+    for j in range(21):
+        if dp[i-1][j] != 0:
+            if 0 <= j + nums[i] <= 20:
+                dp[i][j + nums[i]] += dp[i-1][j]
+                #dp[i][j + nums[i]] += 1
+            if 0 <= j - nums[i] <= 20:
+                dp[i][j - nums[i]] += dp[i-1][j]
+                #dp[i][j - nums[i]] += 1
+print(dp[n-1][nums[-1]])
+```
+
+<img src="../gitbook/images/c5557.JPG" width="700" height="80"><br><br>
