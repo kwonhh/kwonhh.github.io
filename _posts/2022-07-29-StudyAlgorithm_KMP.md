@@ -21,15 +21,15 @@ layout: post
 |5    |ABCDC  |ABCDC  |
 
 ## 일반적인 방법으로 문자열 탐색하기
-<img src="../gitbook/images/kmp_1.JPG" width="240" height="80"><br>
+<img src="../gitbook/images/kmp_1.JPG" width="300" height="80"><br>
 찾으려는 문자가 CDC라고 할 때, 첫 문자를 비교하여 일치하지 않으므로 오른쪽으로 한 칸 시프트<br>
-<img src="../gitbook/images/kmp_2.JPG" width="240" height="80"><br>
+<img src="../gitbook/images/kmp_2.JPG" width="300" height="80"><br>
 역시 첫 문자를 비교하여 일치하지 않으므로 한 칸 시프트<br>
-<img src="../gitbook/images/kmp_3.JPG" width="240" height="80"><br>
+<img src="../gitbook/images/kmp_3.JPG" width="300" height="80"><br>
 첫 문자를 비교하여 일치하는 부분을 찾음<br>
-<img src="../gitbook/images/kmp_4.JPG" width="240" height="80"><br>
+<img src="../gitbook/images/kmp_4.JPG" width="300" height="80"><br>
 이어서 바로 이웃한 옆 문자를 비교하여 일치하는 것을 확인<br>
-<img src="../gitbook/images/kmp_5.JPG" width="240" height="80"><br>
+<img src="../gitbook/images/kmp_5.JPG" width="300" height="80"><br>
 바로 그 다음 문자도 비교하여 일치하는 것을 확인. 이런 과정을 통해 ABCDC에서 CDC를 찾을 수 있음<br>
    
 ## KMP 알고리즘 : 패턴 매칭 이용
