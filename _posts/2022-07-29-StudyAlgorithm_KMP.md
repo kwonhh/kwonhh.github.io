@@ -11,15 +11,14 @@ layout: post
 ## 접두사와 접미사
  - ABCDC 에서 접두사는<br> A<br> AB<br> ABC<br> ABCD<br> ABCDC
  - ABCDC 에서 접미사는<br> C<br> DC<br> CDC<br> BCDC<br> ABCDC<br>
-```markdown
-|길이|접두사|접미사|
+|길이  |접두사  |접미사  |
 |:---:|:-----:|:-----:|
-|1|A|C|
-|2|AB|DC|
-|3|ABC|CDC|
-|4|ABCD|BCDC|
-|5|ABCDC|ABCDC|
-```
+|1    |A      |C      |
+|2    |AB     |DC     |
+|3    |ABC    |CDC    |
+|4    |ABCD   |BCDC   |
+|5    |ABCDC  |ABCDC  |
+
 
    
 ## 일반적인 방법으로 문자열 탐색하기
