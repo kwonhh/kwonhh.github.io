@@ -20,22 +20,22 @@ layout: post
     - 정적 메모리에 할당된 객체이므로 해당 객체에 너무 큰 메모리 쌓이게 되면 성능이 저하
     - 따라서 복잡한 프로그램에 이 패턴을 사용하는 경우 효율이 떨어지고<br>서로 다른 데이터를 공유하게 되면 다른 객체들과 결합도가 떨어지게 됨
 - 구현
-    ```c#
-    pravate class Singleton {
-        private static Singleton stc_singleton;     // 정적 객체 선언
-        public static Singleton Instance() {
-            if (stc_singleton == null)
-                stc_singleton = new Singleton();    // stc_singleton 객체의 중복선언을 방지
-            return stc_singleton;
-        }
+```c#
+pravate class Singleton {
+    private static Singleton stc_singleton;     // 정적 객체 선언
+    public static Singleton Instance() {
+        if (stc_singleton == null)
+            stc_singleton = new Singleton();    // stc_singleton 객체의 중복선언을 방지
+        return stc_singleton;
     }
-    ```
-    ```c#
-    static void Main(string[] args){
-        var objectA = Singleton.Instance();
-        var objectB = Singleton.Instance();         // objectA, B 모두 동일한 객체
-    }
-    ```
+}
+```
+```c#
+static void Main(string[] args){
+    var objectA = Singleton.Instance();
+    var objectB = Singleton.Instance();         // objectA, B 모두 동일한 객체
+}
+```
 <br><br>
 2. 팩토리 메서드 패턴
 - 특징
@@ -89,3 +89,5 @@ public class CatCreator : BehaveCreator
 }
 ```
 <br><br>
+3. 추상 팩토리 패턴
+<img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
