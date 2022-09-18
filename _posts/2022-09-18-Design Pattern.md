@@ -264,6 +264,7 @@ public class DuckTestDrive
   - Animal 클래스는 Hunting_Handler라는 인터페이스를 상속
   - Animal은 하위클래스로 Bird 와 Tiger를 가짐
   - 추상 개념인 Animal이라는 클래스의 기능 부분인 Hunting_Handler를 분리하여 구현
+  - 즉, 추상층이 구현부의 Handler를 매개변수로 취하여 구현부와 추상층을 분리하면서도 연결된 구조
 - 구현
   - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
 
