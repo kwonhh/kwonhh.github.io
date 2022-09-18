@@ -108,7 +108,7 @@ public class CatCreator : BehaveCreator
   - 관련성 있는 여러 종류의 객체를 일관된 방식으로 생성하는 경우 유용
 - 클래스 다이어크램 UML
   - 출처 : [위키피디아](https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8 "위키피디아")<br>
-  <img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
+<img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
   - 추상팩토리 인터페이스에서 CrateProductA, B를 선언하고, 이의 파생클래스 ConcreteFactory1, 2에서는 서로 다른 조건에 따라 생성 함수를 구현할 수 있음
   - 예를 들어 선풍기 부품을 납품한다고 했을 때, 선풍기의 모터, 날개 등의 기능은 동일할 수 있지만, 각각의 규격은 납품하는 회사마다 달라질 수 있다
 - 구현 예시
@@ -196,7 +196,7 @@ class Program
   - 예를 들면 한국에서 사용하던 가전제품을 110V 규격을 사용하는 해외에서 사용하는 경우 어댑터를 쓰는 것으로 이해하면 된다
 - 클래스 다이어그램 UML
   - 출처 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
-  <img src="../gitbook/images/Adapter_UML.JPG" width="587" height="264"><br>
+<img src="../gitbook/images/Adapter_UML.JPG" width="587" height="264"><br>
 - 구현
   - 참고 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
 
@@ -260,7 +260,7 @@ public class DuckTestDrive
   - 즉, 기능부와 구현부에 대해 별도의 클래스로 구현
 - 클래스 다이어그램 UML
   - 출처 : [티스토리 블로그](https://lktprogrammer.tistory.com/35 "티스토리 블로그")<br>
-  <img src="../gitbook/images/Bridge_UML.JPG" width="625" height="295"><br>
+<img src="../gitbook/images/Bridge_UML.JPG" width="625" height="295"><br>
   - Animal 클래스는 Hunting_Handler라는 인터페이스를 상속
   - Animal은 하위클래스로 Bird 와 Tiger를 가짐
   - 추상 개념인 Animal이라는 클래스의 기능 부분인 Hunting_Handler를 분리하여 구현
@@ -335,15 +335,15 @@ public class DuckTestDrive
   - 클라이언트는 전체와 부분을 구분하지 않고 동일한 인터페이스 사용할 수 있음
 - 클래스 다이어그램 UML
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
-  <img src="../gitbook/images/Composite_UML.jpg" width="940" height="470"><br>
+<img src="../gitbook/images/Composite_UML.JPG" width="940" height="470"><br>
   - Component 클래스에서 Leaf 와 Composite 에 해당하는 공통 인터페이스 정의
   - Leaf는 부분 클래스이며, Composite 객체의 부품으로 설정
   - Composite 클래스에서 복수 개의 composite, 복수 개의 leaf를 가질 수 있도록 정의
 - 컴퓨터를 구성하는 예시 : 기존 방법과 Composite 패턴을 사용하는 경우 비교
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
-  <img src="../gitbook/images/Composite_ex.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Composite_ex.jpg" width="943" height="478"><br>
   - 위 방식의 문제는 Mouse, Speaker 등 새로운 장비를 추가할 때마다 새로운 클래스를 추가해야 함<br><br>
-  <img src="../gitbook/images/Composite_ex2.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Composite_ex2.jpg" width="943" height="478"><br>
   _ keyboard, body 등의 부분 클래스들과 computer라는 composite 클래스에서 갖는 getPrice 와 getPower 공통 메서드가 선언되어 있음
   - 또한, computer composite 클래스에는 각 부분 클래스가 새로 생기거나 삭제하는 경우를 관리할 수 있도록 addComponent, removeComponent 메서드를 포함하여 관리
   - 그때의 코드는 아래와 같이 구현할 수 있음
@@ -428,7 +428,7 @@ public class Client {
   - 기본 기능에 추가할 수 있는 기능의 종류가 많은 경우, 각 추가기능을 Decorate클래스로 정의하고 필요한 Decorate객체를 조합하여 추가 기능의 조합을 설계
 - 클래스 다이어그램 UML
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/07/09/decorator-pattern.html "티스토리 블로그")<br>
-  <img src="../gitbook/images/Decorate_UML.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Decorate_UML.jpg" width="943" height="478"><br>
   
 5. Facade Pattern(퍼사드 패턴)
 6. FlyWeight Pattern(플라이웨이트 패턴)
