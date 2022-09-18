@@ -20,6 +20,7 @@ layout: post
     - 정적 메모리에 할당된 객체이므로 해당 객체에 너무 큰 메모리 쌓이게 되면 성능이 저하
     - 따라서 복잡한 프로그램에 이 패턴을 사용하는 경우 효율이 떨어지고<br>서로 다른 데이터를 공유하게 되면 다른 객체들과 결합도가 떨어지게 됨
 - 구현
+
 ```c#
 pravate class Singleton {
     private static Singleton stc_singleton;     // 정적 객체 선언
@@ -35,6 +36,7 @@ static void Main(string[] args){
     var objectB = Singleton.Instance();         // objectA, B 모두 동일한 객체
 }
 ```
+
 <br><br>
 2. 팩토리 메서드 패턴
 - 특징
@@ -42,6 +44,7 @@ static void Main(string[] args){
     - 프로그램의 구조가 잡힌 상태에서 여러사람이 협업하면서 각각의 파생 클래스를 구현하는 것이 가능한 구조
     - 기능의 추가/변경 시 객체 생성코드를 유연하게 변경 가능
 - 구현
+
 ```c#
 // Product 클래스 구현
 public abstract class Behave
@@ -87,12 +90,19 @@ public class CatCreator : BehaveCreator
     }
 }
 ```
+
 <br><br>
 3. 추상 팩토리 패턴
 - 특징
   - 구체적인 클래스에 의존하지 않고, 서로 연관되거나 의존적인 객체들의 조합을 만드는 인터페이스
   - 관련성 있는 여러 종류의 객체를 일관된 방식으로 생성하는 경우 유용
+- 클래스 다이어크램 UML
+  - 출처 : 위키피디아, https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
+  <img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
+  - 추상팩토리 인터페이스에서 CrateProductA, B를 선언하고, 이의 파생클래스 ConcreteFactory1, 2에서는 서로 다른 조건에 따라 생성 함수를 구현할 수 있음
+  - 
 - 구현
+
 ```c#
 // 출처 : 위키피디아, https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
 
@@ -162,4 +172,4 @@ class Program
     }
 }
 ```
-<img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
+
