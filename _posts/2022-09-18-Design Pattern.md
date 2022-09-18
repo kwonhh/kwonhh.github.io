@@ -194,7 +194,7 @@ class Program
   - 한 클래스의 인터페이스를 클라이언트에서 사용하고자 하는 다른 인터페이스로 변환
   - 어댑터 패턴을 사용하면 호환성 문제로 인해 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있음
   - 예를 들면 한국에서 사용하던 가전제품을 110V 규격을 사용하는 해외에서 사용하는 경우 어댑터를 쓰는 것으로 이해하면 된다
-- 클래스 다이어크램 UML
+- 클래스 다이어그램 UML
   - 출처 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
   <img src="../gitbook/images/Adapter_UML.jpg" width="677" height="448"><br>
 - 구현
@@ -259,11 +259,14 @@ public class DuckTestDrive
   - 구현부에서 추상층을 분리하여 각자 독립적으로 변형과 확장이 가능
   - 즉, 기능부와 구현부에 대해 별도의 클래스로 구현
 - 클래스 다이어그램 UML
-  - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
+  - 출처 : [위키백과](https://lktprogrammer.tistory.com/35 "위키백과")<br>
   <img src="../gitbook/images/Bridge_UML.jpg" width="677" height="448"><br>
+  - Animal 클래스는 Hunting_Handler라는 인터페이스를 상속
+  - Animal은 하위클래스로 Bird 와 Tiger를 가짐
+  - 추상 개념인 Animal이라는 클래스의 기능 부분인 Hunting_Handler를 분리하여 구현
 - 구현
   - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
-  
+
 ```c#
 /** "Implementor" */
  interface IDrawingAPI {
@@ -323,6 +326,7 @@ public class DuckTestDrive
  }
 ```
 
+<br><br>
 3. Composite Pattern(컴퍼지트 패턴)
 4. Decorator Pattern(데코레이터 패턴)
 5. Facade Pattern(퍼사드 패턴)
