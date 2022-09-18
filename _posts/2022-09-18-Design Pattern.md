@@ -341,9 +341,9 @@ public class DuckTestDrive
   - Composite 클래스에서 복수 개의 composite, 복수 개의 leaf를 가질 수 있도록 정의
 - 컴퓨터를 구성하는 예시 : 기존 방법과 Composite 패턴을 사용하는 경우 비교
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
-<img src="../gitbook/images/Composite_ex.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Composite_ex.JPG" width="943" height="478"><br>
   - 위 방식의 문제는 Mouse, Speaker 등 새로운 장비를 추가할 때마다 새로운 클래스를 추가해야 함<br><br>
-<img src="../gitbook/images/Composite_ex2.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Composite_ex2.JPG" width="943" height="478"><br>
   _ keyboard, body 등의 부분 클래스들과 computer라는 composite 클래스에서 갖는 getPrice 와 getPower 공통 메서드가 선언되어 있음
   - 또한, computer composite 클래스에는 각 부분 클래스가 새로 생기거나 삭제하는 경우를 관리할 수 있도록 addComponent, removeComponent 메서드를 포함하여 관리
   - 그때의 코드는 아래와 같이 구현할 수 있음
@@ -428,7 +428,7 @@ public class Client {
   - 기본 기능에 추가할 수 있는 기능의 종류가 많은 경우, 각 추가기능을 Decorate클래스로 정의하고 필요한 Decorate객체를 조합하여 추가 기능의 조합을 설계
 - 클래스 다이어그램 UML
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/07/09/decorator-pattern.html "티스토리 블로그")<br>
-<img src="../gitbook/images/Decorate_UML.jpg" width="943" height="478"><br>
+<img src="../gitbook/images/Decorate_UML.JPG" width="943" height="478"><br>
   
 5. Facade Pattern(퍼사드 패턴)
 6. FlyWeight Pattern(플라이웨이트 패턴)
