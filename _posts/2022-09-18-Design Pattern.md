@@ -92,4 +92,74 @@ public class CatCreator : BehaveCreator
 - 특징
   - 구체적인 클래스에 의존하지 않고, 서로 연관되거나 의존적인 객체들의 조합을 만드는 인터페이스
   - 관련성 있는 여러 종류의 객체를 일관된 방식으로 생성하는 경우 유용
+- 구현
+```c#
+// 출처 : 위키피디아, https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
+
+interface IButton
+{
+    void Paint();
+}
+
+interface IGUIFactory
+{
+    IButton CreateButton();
+}
+
+class WinFactory : IGUIFactory
+{
+    public IButton CreateButton()
+    {
+        return new WinButton();
+    }
+}
+
+class OSXFactory : IGUIFactory
+{
+    public IButton CreateButton()
+    {
+        return new OSXButton();
+    }
+}
+
+class WinButton : IButton
+{
+    public void Paint()
+    {
+        //Render a button in a Windows style
+    }
+}
+
+class OSXButton : IButton
+{
+    public void Paint()
+    {
+        //Render a button in a Mac OS X style
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        var appearance = Settings.Appearance;
+
+        IGUIFactory factory;
+        switch (appearance)
+        {
+            case Appearance.Win:
+                factory = new WinFactory();
+                break;
+            case Appearance.OSX:
+                factory = new OSXFactory();
+                break;
+            default:
+                throw new System.NotImplementedException();
+        }
+
+        var button = factory.CreateButton();
+        button.Paint();
+    }
+}
+```
 <img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
