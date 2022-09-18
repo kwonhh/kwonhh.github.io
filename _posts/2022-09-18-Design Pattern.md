@@ -262,7 +262,67 @@ public class DuckTestDrive
   - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
   <img src="../gitbook/images/Bridge_UML.jpg" width="677" height="448"><br>
 - 구현
-  - 참고 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
+  - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
+  
+```c#
+/** "Implementor" */
+ interface IDrawingAPI {
+    void DrawCircle(double x, double y, double radius);
+ }
+
+ /** "ConcreteImplementor" 1/2 */
+ class DrawingAPI1 : IDrawingAPI {
+    public void DrawCircle(double x, double y, double radius)
+    {
+        System.Console.WriteLine("API1.circle at {0}:{1} radius {2}", x, y, radius);
+    }
+ }
+
+ /** "ConcreteImplementor" 2/2 */
+ class DrawingAPI2 : IDrawingAPI
+ {
+    public void DrawCircle(double x, double y, double radius)
+    {
+        System.Console.WriteLine("API2.circle at {0}:{1} radius {2}", x, y, radius);
+    }
+ }
+
+ /** "Abstraction" */
+ interface IShape {
+    void Draw();                             // low-level (i.e. Implementation-specific)
+    void ResizeByPercentage(double pct);     // high-level (i.e. Abstraction-specific)
+ }
+
+ /** "Refined Abstraction" */
+ class CircleShape : IShape {
+    private double x, y, radius;
+    private IDrawingAPI drawingAPI;
+    public CircleShape(double x, double y, double radius, IDrawingAPI drawingAPI)
+    {
+        this.x = x;  this.y = y;  this.radius = radius;
+        this.drawingAPI = drawingAPI;
+    }
+    // low-level (i.e. Implementation-specific)
+    public void Draw() { drawingAPI.DrawCircle(x, y, radius); }
+    // high-level (i.e. Abstraction-specific)
+    public void ResizeByPercentage(double pct) { radius *= pct; }
+ }
+
+ /** "Client" */
+ class BridgePattern {
+    public static void Main(string[] args) {
+        IShape[] shapes = new IShape[2];
+        shapes[0] = new CircleShape(1, 2, 3, new DrawingAPI1());
+        shapes[1] = new CircleShape(5, 7, 11, new DrawingAPI2());
+
+        foreach (IShape shape in shapes) {
+            shape.ResizeByPercentage(2.5);
+            shape.Draw();
+        }
+    }
+ }
+```
+
 3. Composite Pattern(컴퍼지트 패턴)
 4. Decorator Pattern(데코레이터 패턴)
 5. Facade Pattern(퍼사드 패턴)
