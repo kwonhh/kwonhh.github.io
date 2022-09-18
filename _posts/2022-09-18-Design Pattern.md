@@ -43,51 +43,48 @@ layout: post
     - 프로그램의 구조가 잡힌 상태에서 여러사람이 협업하면서 각각의 파생 클래스를 구현하는 것이 가능한 구조
     - 기능의 추가/변경 시 객체 생성코드를 유연하게 변경 가능
 - 구현
-    - Product 클래스 구현
-    ```c#
-    public abstract class Behave
+```c#
+// Product 클래스 구현
+public abstract class Behave
+{
+    public abstract void run();
+}
+
+// ConcreteProduct 클래스 구현
+public class Dog : Behave
+{
+public int NumOfLeg;
+public override void run()
+{ ... }
+}
+      
+public class Cat : Behave
+{
+public int Height;
+public override void run()
+{ ... }
+} 
+
+// Creator 클래스 구현
+public abstract class BehaveCreator
+{
+    public abstract BehaveCreator();
+}
+
+// ConcreteCreator 클래스 구현 : DogCreator
+public class DogCreator : BehaveCreator
+{
+    public override BehaveCreator()
+  {
+    return new Dog();
+  }
+}
+// ConcreteCreator 클래스 구현 : CatCreator
+public class CatCreator : BehaveCreator
+{
+    public override BehaveCreator()
     {
-        public abstract void run();
+    return new Cat();
     }
-    ```
-    - ConcreteProduct 클래스 구현
-    ```c#
-    public class Dog : Behave
-  {
-    public int NumOfLeg;
-    public override void run()
-    { ... }
-  }
-  
-  public class Cat : Behave
-  {
-    public int Height;
-    public override void run()
-    { ... }
-  }     
-    ```
-    - Creator 클래스 구현
-    ```c#
-    public abstract class BehaveCreator
-    {
-        public abstract BehaveCreator();
-    }
-    ```
-    - ConcreteCreator 클래스 구현
-    ```c#
-    public class DogCreator : BehaveCreator
-  {
-        public override BehaveCreator()
-      {
-        return new Dog();
-      }
-  }
-  
-  public class CatCreator : BehaveCreator
-  {
-        public override BehaveCreator()
-        {
-        return new Cat();
-        }
-  }
-    ```
+}
+```
