@@ -76,7 +76,7 @@ public class DogCreator : BehaveCreator
 {
     public override BehaveCreator()
   {
-    return new Dog();
+    return new Dog();           // DogCreator의 객체 생성하고, BehaveCreator 실행하면, Dog의 메서드 사용 가능
   }
 }
 // ConcreteCreator 클래스 구현 : CatCreator
@@ -88,3 +88,4 @@ public class CatCreator : BehaveCreator
     }
 }
 ```
+<br><br>
