@@ -85,9 +85,9 @@ layout: post
   
   public class CatCreator : BehaveCreator
   {
-    public override BehaveCreator()
-    {
-    return new Cat();
-  }
+        public override BehaveCreator()
+        {
+        return new Cat();
+        }
   }
     ```
