@@ -65,7 +65,7 @@ layout: post
     public override void run()
     { ... }
   }     
-  ```
+    ```
     - Creator 클래스 구현
     ```c#
     public abstract class BehaveCreator
