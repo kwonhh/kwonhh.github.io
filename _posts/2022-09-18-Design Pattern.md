@@ -97,11 +97,11 @@ public class CatCreator : BehaveCreator
   - 구체적인 클래스에 의존하지 않고, 서로 연관되거나 의존적인 객체들의 조합을 만드는 인터페이스
   - 관련성 있는 여러 종류의 객체를 일관된 방식으로 생성하는 경우 유용
 - 클래스 다이어크램 UML
-  - 출처 : 위키피디아, https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
+  - 출처 : [위키피디아](https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8 "위키피디아")
   <img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
   - 추상팩토리 인터페이스에서 CrateProductA, B를 선언하고, 이의 파생클래스 ConcreteFactory1, 2에서는 서로 다른 조건에 따라 생성 함수를 구현할 수 있음
   - 
-- 구현
+- 구현 예시
 
 ```c#
 // 출처 : 위키피디아, https://ko.wikipedia.org/wiki/%EC%B6%94%EC%83%81_%ED%8C%A9%ED%86%A0%EB%A6%AC_%ED%8C%A8%ED%84%B4#%ED%81%B4%EB%9E%98%EC%8A%A4_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
