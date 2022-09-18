@@ -335,7 +335,7 @@ public class DuckTestDrive
   - 클라이언트는 전체와 부분을 구분하지 않고 동일한 인터페이스 사용할 수 있음
 - 클래스 다이어그램 UML
   - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
-  <img src="../gitbook/images/Composite_UML.jpg" width="943" height="478"><br>
+  <img src="../gitbook/images/Composite_UML.jpg" width="940" height="470"><br>
   - Component 클래스에서 Leaf 와 Composite 에 해당하는 공통 인터페이스 정의
   - Leaf는 부분 클래스이며, Composite 객체의 부품으로 설정
   - Composite 클래스에서 복수 개의 composite, 복수 개의 leaf를 가질 수 있도록 정의
