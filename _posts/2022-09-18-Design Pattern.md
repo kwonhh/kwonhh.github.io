@@ -421,7 +421,15 @@ public class Client {
 }
 ```
 
+<br><br>
 4. Decorator Pattern(데코레이터 패턴)
+- 특징
+  - 객체의 결합을 통해 기능을 동적으로 유연하게 확장할 수 있음
+  - 기본 기능에 추가할 수 있는 기능의 종류가 많은 경우, 각 추가기능을 Decorate클래스로 정의하고 필요한 Decorate객체를 조합하여 추가 기능의 조합을 설계
+- 클래스 다이어그램 UML
+  - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/07/09/decorator-pattern.html "티스토리 블로그")<br>
+  <img src="../gitbook/images/Decorate_UML.jpg" width="943" height="478"><br>
+  
 5. Facade Pattern(퍼사드 패턴)
 6. FlyWeight Pattern(플라이웨이트 패턴)
 7. Proxy Pattern(프록시 패턴)
