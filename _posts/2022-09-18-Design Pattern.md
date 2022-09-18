@@ -258,7 +258,7 @@ public class DuckTestDrive
 - 특징
   - 구현부에서 추상층을 분리하여 각자 독립적으로 변형과 확장이 가능
   - 즉, 기능부와 구현부에 대해 별도의 클래스로 구현
-- 클래스 다이어크램 UML
+- 클래스 다이어그램 UML
   - 출처 : [위키백과](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A6%AC%EC%A7%80_%ED%8C%A8%ED%84%B4 "위키백과")<br>
   <img src="../gitbook/images/Bridge_UML.jpg" width="677" height="448"><br>
 - 구현
