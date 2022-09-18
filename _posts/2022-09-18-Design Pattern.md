@@ -29,8 +29,7 @@ pravate class Singleton {
         return stc_singleton;
     }
 }
-```
-```c#
+
 static void Main(string[] args){
     var objectA = Singleton.Instance();
     var objectB = Singleton.Instance();         // objectA, B 모두 동일한 객체
@@ -55,14 +54,14 @@ public class Dog : Behave
 {
 public int NumOfLeg;
 public override void run()
-{ ... }
+{ System.out.println("Dog is running"); }
 }
       
 public class Cat : Behave
 {
 public int Height;
 public override void run()
-{ ... }
+{ System.out.println("Cat is running"); }
 } 
 
 // Creator 클래스 구현
@@ -90,4 +89,7 @@ public class CatCreator : BehaveCreator
 ```
 <br><br>
 3. 추상 팩토리 패턴
+- 특징
+  - 구체적인 클래스에 의존하지 않고, 서로 연관되거나 의존적인 객체들의 조합을 만드는 인터페이스
+  - 관련성 있는 여러 종류의 객체를 일관된 방식으로 생성하는 경우 유용
 <img src="../gitbook/images/AbstractFactory_UML.png" width="677" height="448"><br>
