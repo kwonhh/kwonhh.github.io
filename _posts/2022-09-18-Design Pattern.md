@@ -196,7 +196,7 @@ class Program
   - 예를 들면 한국에서 사용하던 가전제품을 110V 규격을 사용하는 해외에서 사용하는 경우 어댑터를 쓰는 것으로 이해하면 된다
 - 클래스 다이어그램 UML
   - 출처 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
-  <img src="../gitbook/images/Adapter_UML.jpg" width="677" height="448"><br>
+  <img src="../gitbook/images/Adapter_UML.JPG" width="587" height="264"><br>
 - 구현
   - 참고 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
 
@@ -259,8 +259,8 @@ public class DuckTestDrive
   - 구현부에서 추상층을 분리하여 각자 독립적으로 변형과 확장이 가능
   - 즉, 기능부와 구현부에 대해 별도의 클래스로 구현
 - 클래스 다이어그램 UML
-  - 출처 : [위키백과](https://lktprogrammer.tistory.com/35 "위키백과")<br>
-  <img src="../gitbook/images/Bridge_UML.jpg" width="677" height="448"><br>
+  - 출처 : [티스토리 블로그](https://lktprogrammer.tistory.com/35 "티스토리 블로그")<br>
+  <img src="../gitbook/images/Bridge_UML.JPG" width="625" height="295"><br>
   - Animal 클래스는 Hunting_Handler라는 인터페이스를 상속
   - Animal은 하위클래스로 Bird 와 Tiger를 가짐
   - 추상 개념인 Animal이라는 클래스의 기능 부분인 Hunting_Handler를 분리하여 구현
@@ -329,6 +329,98 @@ public class DuckTestDrive
 
 <br><br>
 3. Composite Pattern(컴퍼지트 패턴)
+- 특징
+  - 여러 개의 객체들로 구성된 복합 객체와 단일 객체를 클라이언트에서 구별 없이 다루게 해주는 패턴
+  - 전체와 부분의 관계를 갖는 객체들 사이의 관계를 정의할 때 유용
+  - 클라이언트는 전체와 부분을 구분하지 않고 동일한 인터페이스 사용할 수 있음
+- 클래스 다이어그램 UML
+  - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
+  <img src="../gitbook/images/Composite_UML.jpg" width="943" height="478"><br>
+  - Component 클래스에서 Leaf 와 Composite 에 해당하는 공통 인터페이스 정의
+  - Leaf는 부분 클래스이며, Composite 객체의 부품으로 설정
+  - Composite 클래스에서 복수 개의 composite, 복수 개의 leaf를 가질 수 있도록 정의
+- 컴퓨터를 구성하는 예시 : 기존 방법과 Composite 패턴을 사용하는 경우 비교
+  - 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
+  <img src="../gitbook/images/Composite_ex.jpg" width="943" height="478"><br>
+  - 위 방식의 문제는 Mouse, Speaker 등 새로운 장비를 추가할 때마다 새로운 클래스를 추가해야 함<br><br>
+  <img src="../gitbook/images/Composite_ex2.jpg" width="943" height="478"><br>
+  _ keyboard, body 등의 부분 클래스들과 computer라는 composite 클래스에서 갖는 getPrice 와 getPower 공통 메서드가 선언되어 있음
+  - 또한, computer composite 클래스에는 각 부분 클래스가 새로 생기거나 삭제하는 경우를 관리할 수 있도록 addComponent, removeComponent 메서드를 포함하여 관리
+  - 그때의 코드는 아래와 같이 구현할 수 있음
+  - 구현 출처 : [티스토리 블로그](https://gmlwjd9405.github.io/2018/08/10/composite-pattern.html "티스토리 블로그")<br>
+  
+```c#
+// 공통 기능을 갖는 추상 클래스 선언
+public abstract class ComputerDevice {
+  public abstract int getPrice();
+  public abstract int getPower();
+}
+
+// 각 Keyboard, Body, Monitor 등은 ComputerDevice를 상속하여 구현
+public class Keyboard extends ComputerDevice {
+  private int price;
+  private int power;
+  public Keyboard(int power, int price) {
+    this.power = power;
+    this.price = price;
+  }
+  public int getPrice() { return price; }
+  public int getPower() { return power; }
+}
+public class Body { 동일한 구조 }
+public class Monitor { 동일한 구조 }
+
+public class Computer extends ComputerDevice {
+  // 복수 개의 ComputerDevice 객체를 가리킴
+  private List<ComputerDevice> components = new ArrayList<ComputerDevice>();
+
+  // ComputerDevice 객체를 Computer 클래스에 추가
+  public addComponent(ComputerDevice component) { components.add(component); }
+  // ComputerDevice 객체를 Computer 클래스에서 제거
+  public removeComponent(ComputerDevice component) { components.remove(component); }
+  // componet 리스트를 관리하여 부분 객체(위 예시에서는 모니터, 키보드 등)의 추가/삭제의 변동이 발생해도
+  // 전체 객체의 클래스 코드를 변경하지 않아도 된다.
+
+  // 전체 가격을 포함하는 각 부품의 가격을 합산
+  public int getPrice() {
+    int price = 0;
+    for(ComputerDevice component : components) {
+      price += component.getPrice();
+    }
+    return price;
+  }
+  // 전체 소비 전력량을 포함하는 각 부품의 소비 전력량을 합산
+  public int getPower() {
+    int power = 0;
+    for(ComputerDevice component : components) {
+      price += component.getPower();
+    }
+    return power;
+  }
+}
+
+public class Client {
+  public static void main(String[] args) {
+    // 컴퓨터의 부품으로 Keyboard, Body, Monitor 객체를 생성
+    Keyboard keyboard = new Keyboard(5, 2);
+    Body body = new Body(100, 70);
+    Monitor monitor = new Monitor(20, 30);
+
+    // Computer 객체를 생성하고 addComponent()를 통해 부품 객체들을 설정
+    Computer computer = new Computer();
+    computer.addComponent(keyboard);
+    computer.addComponent(body);
+    computer.addComponent(monitor);
+
+    // 컴퓨터의 가격과 전력 소비량을 구함
+    int computerPrice = computer.getPrice();
+    int computerPower = computer.getPower();
+    System.out.println("Computer Price: " + computerPrice + "만원");
+    System.out.println("Computer Power: " + computerPower + "W");
+  }
+}
+```
+
 4. Decorator Pattern(데코레이터 패턴)
 5. Facade Pattern(퍼사드 패턴)
 6. FlyWeight Pattern(플라이웨이트 패턴)
