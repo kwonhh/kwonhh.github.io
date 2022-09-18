@@ -190,6 +190,69 @@ class Program
 <br><br>
 ## Structural Pattern(구조 패턴)
 1. Adapter Pattern(어댑터 패턴)
+- 특징
+  - 한 클래스의 인터페이스를 클라이언트에서 사용하고자 하는 다른 인터페이스로 변환
+  - 어댑터 패턴을 사용하면 호환성 문제로 인해 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있음
+  - 예를 들면 한국에서 사용하던 가전제품을 110V 규격을 사용하는 해외에서 사용하는 경우 어댑터를 쓰는 것으로 이해하면 된다
+- 클래스 다이어크램 UML
+  - 출처 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
+  <img src="../gitbook/images/Adapter_UML.jpg" width="677" height="448"><br>
+- 구현
+  - 참고 : [티스토리블로그](https://jusungpark.tistory.com/22 "티스토리 블로그")<br>
+
+```c#
+public interface Duck
+{
+  public void fly();
+}
+public class Duck1 : Duck
+{
+  public void fly()
+  {
+    System.out.prinln("duck1 is flaying");
+  }
+}
+
+public interface Frog
+{
+  public void jump();
+}
+public class Frog1 : Frog
+{
+  public void jump()
+  {
+    System.out.println("frog1 is jumping");
+  }
+}
+```
+
+```c#
+// Frog1 의 객체가 부족하여 어쩔 수 없이 Duck1 객체를 사용하여 frog를 구현하는 상황이라고 할 때
+public class FrogAdapter : Duck
+{
+  Frog frog;
+  public FrogAdapter(Frog frog)
+  {
+    this.frog = frog;
+  }
+  
+  public void fly()
+  {
+    frog.jump();
+  }
+}
+
+public class DuckTestDrive
+{
+  public static void main(string[] args)
+  {
+    Frog1 frog1 = new Frog1();
+    Duck frog_apt = new FrogAdpater(frog1);
+    frog_apt.fly();
+  }
+}
+```
+
 2. Bridge Pattern(브릿지 패턴)
 3. Composite Pattern(컴퍼지트 패턴)
 4. Decorator Pattern(데코레이터 패턴)
